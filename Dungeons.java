@@ -31,10 +31,23 @@ public class Dungeons{
 		//skills and stuff
 		int[] skillsArray = new int[18];
 		getSkills(playerClass, playerRace, playerBack, skillsArray);
-		
+
+		//assign the stat modifiers
+		int[] statsMod = new int[6];
+		getStatsMod(statsMod, statArray);
+
+		//assigns the skill modifiers
+		int[] skillModArray = new int[18];
+		getSkillMods(statsMod, skillsArray, skillModArray);
+
 		//using this to check if program is working, comment out when done
 		System.out.println("Your stats are\n--------------\nSTR: " + statArray[0] + "\nDEX: " + statArray[1] +
 			"\nCON: " + statArray[2] + "\nINT: " + statArray[3] + "\nWIS: " + statArray[4] + "\nCHA: " + statArray[5]);
+
+		//comment out when done, skill mod output
+		for (int i =0; i < skillModArray.length; i++) {
+			System.out.println(skillModArray[i]);
+		}
 
 	}
 
@@ -455,28 +468,92 @@ public class Dungeons{
 
 				System.out.print("Select which skills you'd like to be proficient in:\n");
 				for (int j = 0; j < tempSkills.length; j++){
-					if(tempSkills[j] == 1){
+					if(tempSkills[j] == 1 && skillsArray[j] == 0){//skill is available for the class and not already given
 						System.out.print(j +". "+ tempNameSkills[j] + "\n");
 					}
 				}
 				
-				int statChoice = input.nextInt();
+				int skillChoice = input.nextInt();
 
+				if (tempSkills[skillChoice] == 1 && skillsArray[skillChoice] == 0) {
+					skillsArray[skillChoice] = 1;//assign the skill
+				} else i--;	
+			}
+			
+		case 2: 
+			for (int i = 0; i < tempSkills.length; i++) {
+				tempSkills[i] = 1;
+			}
+			numSkills = 3;
 
+			for (int i = 0; i < numSkills; i++){
 
+				System.out.print("Select which skills you'd like to be proficient in:\n");
+				for (int j = 0; j < tempSkills.length; j++){
+					if(tempSkills[j] == 1 && skillsArray[j] == 0){//skill is available for the class and not already given
+						System.out.print(j +". "+ tempNameSkills[j] + "\n");
+					}
+				}
+				
+				int skillChoice = input.nextInt();
+
+				if (tempSkills[skillChoice] == 1 && skillsArray[skillChoice] == 0) {
+					skillsArray[skillChoice] = 1;//assign the skill
+				} else i--;	
+			}
+
+		case 3:
+			tempSkills[5] = 1;
+			tempSkills[6] = 1;
+			tempSkills[9] = 1;
+			tempSkills[13] = 1;
+			tempSkills[14] = 1;
+			numSkills = 2;
+
+			for (int i = 0; i < numSkills; i++){
+
+				System.out.print("Select which skills you'd like to be proficient in:\n");
+				for (int j = 0; j < tempSkills.length; j++){
+					if(tempSkills[j] == 1 && skillsArray[j] == 0){//skill is available for the class and not already given
+						System.out.print(j +". "+ tempNameSkills[j] + "\n");
+					}
+				}
+				
+				int skillChoice = input.nextInt();
+
+				if (tempSkills[skillChoice] == 1 && skillsArray[skillChoice] == 0) {
+					skillsArray[skillChoice] = 1;//assign the skill
+				} else i--;	
 			}
 		}
-
-
-
 	}
 
+	public static void getStatsMod(int statsMod[], int statArray[]) { //assigns the stat modifier
+		for (int i = 0; i < statArray.length; i++) {
+			statsMod[i] = (statArray[i] / 2) - 5;
+		}
+	}
 
-
-
-
-	/* public static int races(int dndRace){
-
-
-	} */
+	public static void getSkillMods(int statsMod[], int skillsArray[], int skillModArray[]) {
+		final int PROFICIENCY = 2;//Proficiency bonus
+		//assigning each skill mod based on stat modifier and proficiency
+		skillModArray[0] = statsMod[1] + (PROFICIENCY * skillsArray[0]);
+		skillModArray[1] = statsMod[4] + (PROFICIENCY * skillsArray[1]);
+		skillModArray[2] = statsMod[3] + (PROFICIENCY * skillsArray[2]);
+		skillModArray[3] = statsMod[0] + (PROFICIENCY * skillsArray[3]);
+		skillModArray[4] = statsMod[5] + (PROFICIENCY * skillsArray[4]);
+		skillModArray[5] = statsMod[3] + (PROFICIENCY * skillsArray[5]);
+		skillModArray[6] = statsMod[4] + (PROFICIENCY * skillsArray[6]);
+		skillModArray[7] = statsMod[5] + (PROFICIENCY * skillsArray[7]);
+		skillModArray[8] = statsMod[3] + (PROFICIENCY * skillsArray[8]);
+		skillModArray[9] = statsMod[4] + (PROFICIENCY * skillsArray[9]);
+		skillModArray[10] = statsMod[3] + (PROFICIENCY * skillsArray[10]);
+		skillModArray[11] = statsMod[4] + (PROFICIENCY * skillsArray[11]);
+		skillModArray[12] = statsMod[5] + (PROFICIENCY * skillsArray[12]);
+		skillModArray[13] = statsMod[5] + (PROFICIENCY * skillsArray[13]);
+		skillModArray[14] = statsMod[3] + (PROFICIENCY * skillsArray[14]);
+		skillModArray[15] = statsMod[1] + (PROFICIENCY * skillsArray[15]);
+		skillModArray[16] = statsMod[1] + (PROFICIENCY * skillsArray[16]);
+		skillModArray[17] = statsMod[4] + (PROFICIENCY * skillsArray[17]);
+	}
 }
