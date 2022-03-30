@@ -540,6 +540,34 @@ public class Dungeons{
 			tenpSkills[15] = 1;
 			tenpSkills[16] = 1;
 			numSkills = 4;
+				
+		case 10:
+			tenpSkills[2] = 1;
+			tenpSkills[4] = 1;
+			tenpSkills[6] = 1;
+			tenpSkills[7] = 1;
+			tenpSkills[13] = 1;
+			tenpSkills[14] = 1;
+			numSkills = 2;
+				
+		case 11:
+			tenpSkills[2] = 1;
+			tenpSkills[4] = 1;
+			tenpSkills[5] = 1;
+			tenpSkills[7] = 1;
+			tenpSkills[8] = 1;
+			tenpSkills[10] = 1;
+			tenpSkills[14] = 1;
+			numSkills = 2;
+				
+		case 12:
+			tenpSkills[2] = 1;
+			tenpSkills[5] = 1;
+			tenpSkills[6] = 1;
+			tenpSkills[8] = 1;
+			tenpSkills[9] = 1;
+			tenpSkills[14] = 1;
+			numSkills =2;
 		}
 		for (int i = 0; i < numSkills; i++){
 
