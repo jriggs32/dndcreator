@@ -445,6 +445,7 @@ public class Dungeons{
 			break;
 		case 11: skillsArray[15] = 1;
 			skillsArray[16] = 1;
+			skillsArray[18] = 1;
 			break;
 		}
 
@@ -463,12 +464,14 @@ public class Dungeons{
 			tempSkills[11] = 1;
 			tempSkills[17] = 1;
 			numSkills = 2;
+			break;
 			
 		case 2: 
 			for (int i = 0; i < tempSkills.length; i++) {
 				tempSkills[i] = 1;
 			}
 			numSkills = 3;
+			break;
 
 		case 3:
 			tempSkills[5] = 1;
@@ -477,6 +480,8 @@ public class Dungeons{
 			tempSkills[13] = 1;
 			tempSkills[14] = 1;
 			numSkills = 2;
+			skillsArray[18] = 1;
+			break;
 				
 		case 4: 
 			tempSkills[2] = 1;
@@ -488,6 +493,7 @@ public class Dungeons{
 			tempSkills[14] = 1;
 			tempSkills[17] = 1;
 			numSkills = 2;
+			break;
 		
 		case 5: 
 			tempSkills[0] = 1;
@@ -498,6 +504,7 @@ public class Dungeons{
 			tempSkills[7] = 1;
 			tempSkills[11] = 1;
 			numSkills = 2;
+			break;
 		
 		case 6:
 			tempSkills[0] = 1;
@@ -507,6 +514,7 @@ public class Dungeons{
 			tempSkills[14] = 1;
 			tempSkills[16] = 1;
 			numSkills = 2;
+			break;
 				
 		case 7:
 			tempSkills[3] = 1;
@@ -515,6 +523,7 @@ public class Dungeons{
 			tempSkills[13] = 1;
 			tempSkills[14] = 1;
 			numSkills = 2;
+			break;
 				
 		case 8:
 			tempSkills[1] = 1;
@@ -526,6 +535,7 @@ public class Dungeons{
 			tempSkills[16] = 1;
 			tempSkills[17] = 1;
 			numSkills = 3;
+			break;
 				
 		case 9:
 			tempSkills[0] = 1;
@@ -540,6 +550,8 @@ public class Dungeons{
 			tempSkills[15] = 1;
 			tempSkills[16] = 1;
 			numSkills = 4;
+			skillsArray[18] = 1;//automatic proficiency with thieve's tools
+			break;
 				
 		case 10:
 			tempSkills[2] = 1;
@@ -549,6 +561,7 @@ public class Dungeons{
 			tempSkills[13] = 1;
 			tempSkills[14] = 1;
 			numSkills = 2;
+			break;
 				
 		case 11:
 			tempSkills[2] = 1;
@@ -559,6 +572,7 @@ public class Dungeons{
 			tempSkills[10] = 1;
 			tempSkills[14] = 1;
 			numSkills = 2;
+			break;
 				
 		case 12:
 			tempSkills[2] = 1;
@@ -568,6 +582,7 @@ public class Dungeons{
 			tempSkills[9] = 1;
 			tempSkills[14] = 1;
 			numSkills =2;
+			break;
 		}
 		for (int i = 0; i < numSkills; i++){
 
