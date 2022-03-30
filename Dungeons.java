@@ -5,50 +5,57 @@ import java.util.Random;
 
 public class Dungeons{
 	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Enter a character name: ");
-		String characterName = input.nextLine();
-		
-		//class selection
-		int playerClass = getClassD();
-		System.out.print(playerClass);
-		
-		//race and subrace selection
-		String playerRace = getRace();
-		System.out.print("\n" + playerRace + "\n");
+		try {
+			Scanner input = new Scanner(System.in);
+			System.out.print("Enter a character name: ");
+			String characterName = input.nextLine();
+			
+			//class selection
+			int playerClass = getClassD();
+			System.out.print(playerClass);
+			
+			//race and subrace selection
+			String playerRace = getRace();
+			System.out.print("\n" + playerRace + "\n");
 
-		 //stat rolls and selection
-		int[] statArray = new int[6];
-		getStatRolls(statArray);
+			 //stat rolls and selection
+			int[] statArray = new int[6];
+			getStatRolls(statArray);
 
-		 //background selection
-		int playerBack = getBackground();
-		System.out.print("\n" + playerBack);
+			 //background selection
+			int playerBack = getBackground();
+			System.out.print("\n" + playerBack);
 
-		 //race stat modifications
-		modRaceStat(playerRace, statArray);
+			 //race stat modifications
+			modRaceStat(playerRace, statArray);
 
-		//skills and stuff
-		int[] skillsArray = new int[19];
-		getSkills(playerClass, playerRace, playerBack, skillsArray);
+			//skills and stuff
+			int[] skillsArray = new int[19];
+			getSkills(playerClass, playerRace, playerBack, skillsArray);
 
-		//assign the stat modifiers
-		int[] statsMod = new int[6];
-		getStatsMod(statsMod, statArray);
+			//assign the stat modifiers
+			int[] statsMod = new int[6];
+			getStatsMod(statsMod, statArray);
 
-		//assigns the skill modifiers
-		int[] skillModArray = new int[19];
-		getSkillMods(statsMod, skillsArray, skillModArray);
+			//assigns the skill modifiers
+			int[] skillModArray = new int[19];
+			getSkillMods(statsMod, skillsArray, skillModArray);
 
-		//using this to check if program is working, comment out when done
-		System.out.println("Your stats are\n--------------\nSTR: " + statArray[0] + "\nDEX: " + statArray[1] +
-			"\nCON: " + statArray[2] + "\nINT: " + statArray[3] + "\nWIS: " + statArray[4] + "\nCHA: " + statArray[5]);
+			//assigns the saving throws array
+			int[] savingThrowArray = new int[6];
+			getSavingThrowMods(playerClass, statsMod)
 
-		//comment out when done, skill mod output
-		for (int i =0; i < skillModArray.length; i++) {
-			System.out.println(skillModArray[i]);
+			//using this to check if program is working, comment out when done
+			System.out.println("Your stats are\n--------------\nSTR: " + statArray[0] + "\nDEX: " + statArray[1] +
+				"\nCON: " + statArray[2] + "\nINT: " + statArray[3] + "\nWIS: " + statArray[4] + "\nCHA: " + statArray[5]);
+
+			//comment out when done, skill mod output
+			for (int i =0; i < skillModArray.length; i++) {
+				System.out.println(skillModArray[i]);
+			}
+		} catch(InputMismatchException | IndexOutOfBoundsException e) {
+			System.out.println("An invalid input was entered.");
 		}
-
 	}
 
 		//saved stuff for later 
@@ -450,8 +457,8 @@ public class Dungeons{
 		}
 
 		Scanner input = new Scanner(System.in);
-		int[] tempSkills = new int [18];
-		String[] tempNameSkills = new String[] {"Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"};
+		int[] tempSkills = new int [19];
+		String[] tempNameSkills = new String[] {"Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival","Thieves Tools"};
 
 		int numSkills = 0;
 
@@ -599,6 +606,21 @@ public class Dungeons{
 					skillsArray[skillChoice] = 1;//assign the skill
 				} else i--;	
 			}
+
+		if (tempClass == 9) {
+			for (int k = 0; k < 2 ; k++) {
+				System.out.print("Select which skills the Rogue will have expertise in (double proficiency)");
+				for (int l = 0; k < skillsArray.length; l++) {
+					if (skillsArray[l] == 1)
+						System.out.print(l + ". " + skillsArray[l] + "\n");
+				}
+					int expertiseChoice = input.nextInt();
+
+					if (skillsArray[expertiseChoice] == 1)
+						skillsArray[expertiseChoice] == 2;
+					else k--;
+				}
+		}
 	}
 
 	public static void getStatsMod(int statsMod[], int statArray[]) { //assigns the stat modifier
@@ -628,5 +650,58 @@ public class Dungeons{
 		skillModArray[15] = statsMod[1] + (PROFICIENCY * skillsArray[15]);
 		skillModArray[16] = statsMod[1] + (PROFICIENCY * skillsArray[16]);
 		skillModArray[17] = statsMod[4] + (PROFICIENCY * skillsArray[17]);
+	}
+
+	public static void getSavingThrowMods(int playerClass, int statsMod[]) {
+		final int PROFICIENCY = 2;
+		for (int i = 0; i < savingThrowArray.length; i++) {
+			savingThrowArray[i] = statsMod[i];
+		}
+		switch(playerClass) {
+		case 1:
+			savingThrowArray[0] += PROFICIENCY;
+			savingThrowArray[2] += PROFICIENCY;
+			break;
+		case 2:
+			savingThrowArray[1] += PROFICIENCY;
+			savingThrowArray[5] += PROFICIENCY;
+			break;
+		case 3:
+			savingThrowArray[4] += PROFICIENCY;
+			savingThrowArray[5] += PROFICIENCY;
+			break;
+		case 4:
+			savingThrowArray[3] += PROFICIENCY;
+			savingThrowArray[4] += PROFICIENCY;
+			break;
+		case 5:
+			savingThrowArray[0] += PROFICIENCY;
+			savingThrowArray[2] += PROFICIENCY;
+			break;
+		case 6:
+			savingThrowArray[0] += PROFICIENCY;
+			savingThrowArray[1] += PROFICIENCY;
+			break;
+		case 7:
+			savingThrowArray[4] += PROFICIENCY;
+			savingThrowArray[5] += PROFICIENCY;
+			break;
+		case 8:
+			savingThrowArray[1] += PROFICIENCY;
+			savingThrowArray[3] += PROFICIENCY;
+			break;
+		case 9:
+			savingThrowArray[2] += PROFICIENCY;
+			savingThrowArray[5] += PROFICIENCY;
+			break;
+		case 10:
+			savingThrowArray[4] += PROFICIENCY;
+			savingThrowArray[5] += PROFICIENCY;
+			break;
+		case 11:
+			savingThrowArray[3] += PROFICIENCY;
+			savingThrowArray[4] += PROFICIENCY;
+			break;
+		}
 	}
 }
