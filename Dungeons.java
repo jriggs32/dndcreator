@@ -463,44 +463,12 @@ public class Dungeons{
 			tempSkills[11] = 1;
 			tempSkills[17] = 1;
 			numSkills = 2;
-
-			for (int i = 0; i < numSkills; i++){
-
-				System.out.print("Select which skills you'd like to be proficient in:\n");
-				for (int j = 0; j < tempSkills.length; j++){
-					if(tempSkills[j] == 1 && skillsArray[j] == 0){//skill is available for the class and not already given
-						System.out.print(j +". "+ tempNameSkills[j] + "\n");
-					}
-				}
-				
-				int skillChoice = input.nextInt();
-
-				if (tempSkills[skillChoice] == 1 && skillsArray[skillChoice] == 0) {
-					skillsArray[skillChoice] = 1;//assign the skill
-				} else i--;	
-			}
 			
 		case 2: 
 			for (int i = 0; i < tempSkills.length; i++) {
 				tempSkills[i] = 1;
 			}
 			numSkills = 3;
-
-			for (int i = 0; i < numSkills; i++){
-
-				System.out.print("Select which skills you'd like to be proficient in:\n");
-				for (int j = 0; j < tempSkills.length; j++){
-					if(tempSkills[j] == 1 && skillsArray[j] == 0){//skill is available for the class and not already given
-						System.out.print(j +". "+ tempNameSkills[j] + "\n");
-					}
-				}
-				
-				int skillChoice = input.nextInt();
-
-				if (tempSkills[skillChoice] == 1 && skillsArray[skillChoice] == 0) {
-					skillsArray[skillChoice] = 1;//assign the skill
-				} else i--;	
-			}
 
 		case 3:
 			tempSkills[5] = 1;
@@ -509,8 +477,71 @@ public class Dungeons{
 			tempSkills[13] = 1;
 			tempSkills[14] = 1;
 			numSkills = 2;
-
-			for (int i = 0; i < numSkills; i++){
+				
+		case 4: 
+			tempSkills[2] = 1;
+			tempSkills[3] = 1;
+			tempSkills[6] = 1;
+			tempSkills[9] = 1;
+			tempSkills[10] = 1;
+			tempSkills[11] = 1;
+			tempSkills[14] = 1;
+			tempSkills[17] = 1;
+			numSkills = 2;
+		
+		case 5: 
+			tenpSkills[0] = 1;
+			tenpSkills[1] = 1;
+			tenpSkills[3] = 1;
+			tenpSkills[5] = 1;
+			tenpSkills[6] = 1;
+			tenpSkills[7] = 1;
+			tenpSkills[11] = 1;
+			numSkills = 2;
+		
+		case 6:
+			tenpSkills[0] = 1;
+			tenpSkills[3] = 1;
+			tenpSkills[5] = 1;
+			tenpSkills[6] = 1;
+			tenpSkills[14] = 1;
+			tenpSkills[16] = 1;
+			numSkills = 2;
+				
+		case 7:
+			tenpSkills[3] = 1;
+			tenpSkills[6] = 1;
+			tenpSkills[9] = 1;
+			tenpSkills[13] = 1;
+			tenpSkills[14] = 1;
+			numSkills = 2;
+				
+		case 8:
+			tenpSkills[1] = 1;
+			tenpSkills[3] = 1;
+			tenpSkills[6] = 1;
+			tenpSkills[8] = 1;
+			tenpSkills[10] = 1;
+			tenpSkills[11] = 1;
+			tenpSkills[16] = 1;
+			tenpSkills[17] = 1;
+			numSkills = 3;
+				
+		case 9:
+			tenpSkills[0] = 1;
+			tenpSkills[3] = 1;
+			tenpSkills[4] = 1;
+			tenpSkills[6] = 1;
+			tenpSkills[7] = 1;
+			tenpSkills[8] = 1;
+			tenpSkills[11] = 1;
+			tenpSkills[12] = 1;
+			tenpSkills[13] = 1;
+			tenpSkills[15] = 1;
+			tenpSkills[16] = 1;
+			numSkills = 4;
+		}
+		for (int i = 0; i < numSkills; i++){
 
 				System.out.print("Select which skills you'd like to be proficient in:\n");
 				for (int j = 0; j < tempSkills.length; j++){
@@ -525,7 +556,6 @@ public class Dungeons{
 					skillsArray[skillChoice] = 1;//assign the skill
 				} else i--;	
 			}
-		}
 	}
 
 	public static void getStatsMod(int statsMod[], int statArray[]) { //assigns the stat modifier
