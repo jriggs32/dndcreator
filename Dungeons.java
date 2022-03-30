@@ -29,7 +29,7 @@ public class Dungeons{
 		modRaceStat(playerRace, statArray);
 
 		//skills and stuff
-		int[] skillsArray = new int[18];
+		int[] skillsArray = new int[19];
 		getSkills(playerClass, playerRace, playerBack, skillsArray);
 
 		//assign the stat modifiers
@@ -37,7 +37,7 @@ public class Dungeons{
 		getStatsMod(statsMod, statArray);
 
 		//assigns the skill modifiers
-		int[] skillModArray = new int[18];
+		int[] skillModArray = new int[19];
 		getSkillMods(statsMod, skillsArray, skillModArray);
 
 		//using this to check if program is working, comment out when done
