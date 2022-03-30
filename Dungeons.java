@@ -490,83 +490,83 @@ public class Dungeons{
 			numSkills = 2;
 		
 		case 5: 
-			tenpSkills[0] = 1;
-			tenpSkills[1] = 1;
-			tenpSkills[3] = 1;
-			tenpSkills[5] = 1;
-			tenpSkills[6] = 1;
-			tenpSkills[7] = 1;
-			tenpSkills[11] = 1;
+			tempSkills[0] = 1;
+			tempSkills[1] = 1;
+			tempSkills[3] = 1;
+			tempSkills[5] = 1;
+			tempSkills[6] = 1;
+			tempSkills[7] = 1;
+			tempSkills[11] = 1;
 			numSkills = 2;
 		
 		case 6:
-			tenpSkills[0] = 1;
-			tenpSkills[3] = 1;
-			tenpSkills[5] = 1;
-			tenpSkills[6] = 1;
-			tenpSkills[14] = 1;
-			tenpSkills[16] = 1;
+			tempSkills[0] = 1;
+			tempSkills[3] = 1;
+			tempSkills[5] = 1;
+			tempSkills[6] = 1;
+			tempSkills[14] = 1;
+			tempSkills[16] = 1;
 			numSkills = 2;
 				
 		case 7:
-			tenpSkills[3] = 1;
-			tenpSkills[6] = 1;
-			tenpSkills[9] = 1;
-			tenpSkills[13] = 1;
-			tenpSkills[14] = 1;
+			tempSkills[3] = 1;
+			tempSkills[6] = 1;
+			tempSkills[9] = 1;
+			tempSkills[13] = 1;
+			tempSkills[14] = 1;
 			numSkills = 2;
 				
 		case 8:
-			tenpSkills[1] = 1;
-			tenpSkills[3] = 1;
-			tenpSkills[6] = 1;
-			tenpSkills[8] = 1;
-			tenpSkills[10] = 1;
-			tenpSkills[11] = 1;
-			tenpSkills[16] = 1;
-			tenpSkills[17] = 1;
+			tempSkills[1] = 1;
+			tempSkills[3] = 1;
+			tempSkills[6] = 1;
+			tempSkills[8] = 1;
+			tempSkills[10] = 1;
+			tempSkills[11] = 1;
+			tempSkills[16] = 1;
+			tempSkills[17] = 1;
 			numSkills = 3;
 				
 		case 9:
-			tenpSkills[0] = 1;
-			tenpSkills[3] = 1;
-			tenpSkills[4] = 1;
-			tenpSkills[6] = 1;
-			tenpSkills[7] = 1;
-			tenpSkills[8] = 1;
-			tenpSkills[11] = 1;
-			tenpSkills[12] = 1;
-			tenpSkills[13] = 1;
-			tenpSkills[15] = 1;
-			tenpSkills[16] = 1;
+			tempSkills[0] = 1;
+			tempSkills[3] = 1;
+			tempSkills[4] = 1;
+			tempSkills[6] = 1;
+			tempSkills[7] = 1;
+			tempSkills[8] = 1;
+			tempSkills[11] = 1;
+			tempSkills[12] = 1;
+			tempSkills[13] = 1;
+			tempSkills[15] = 1;
+			tempSkills[16] = 1;
 			numSkills = 4;
 				
 		case 10:
-			tenpSkills[2] = 1;
-			tenpSkills[4] = 1;
-			tenpSkills[6] = 1;
-			tenpSkills[7] = 1;
-			tenpSkills[13] = 1;
-			tenpSkills[14] = 1;
+			tempSkills[2] = 1;
+			tempSkills[4] = 1;
+			tempSkills[6] = 1;
+			tempSkills[7] = 1;
+			tempSkills[13] = 1;
+			tempSkills[14] = 1;
 			numSkills = 2;
 				
 		case 11:
-			tenpSkills[2] = 1;
-			tenpSkills[4] = 1;
-			tenpSkills[5] = 1;
-			tenpSkills[7] = 1;
-			tenpSkills[8] = 1;
-			tenpSkills[10] = 1;
-			tenpSkills[14] = 1;
+			tempSkills[2] = 1;
+			tempSkills[4] = 1;
+			tempSkills[5] = 1;
+			tempSkills[7] = 1;
+			tempSkills[8] = 1;
+			tempSkills[10] = 1;
+			tempSkills[14] = 1;
 			numSkills = 2;
 				
 		case 12:
-			tenpSkills[2] = 1;
-			tenpSkills[5] = 1;
-			tenpSkills[6] = 1;
-			tenpSkills[8] = 1;
-			tenpSkills[9] = 1;
-			tenpSkills[14] = 1;
+			tempSkills[2] = 1;
+			tempSkills[5] = 1;
+			tempSkills[6] = 1;
+			tempSkills[8] = 1;
+			tempSkills[9] = 1;
+			tempSkills[14] = 1;
 			numSkills =2;
 		}
 		for (int i = 0; i < numSkills; i++){
