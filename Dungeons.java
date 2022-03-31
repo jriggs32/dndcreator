@@ -4,8 +4,7 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Dungeons{
-	public static void main(String[] args) {
-		try {
+	public static void main(String[] args) throws Exception{
 			Scanner input = new Scanner(System.in);
 			System.out.print("Enter a character name: ");
 			String characterName = input.nextLine();
@@ -45,17 +44,15 @@ public class Dungeons{
 			int[] savingThrowArray = new int[6];
 			getSavingThrowMods(playerClass, statsMod, savingThrowArray);
 
-			//using this to check if program is working, comment out when done
+			charSheet(characterName, playerClass, playerRace, statArray, playerBack, skillsArray, statsMod, skillModArray, savingThrowArray);
+			/*//using this to check if program is working, comment out when done
 			System.out.println("Your stats are\n--------------\nSTR: " + statArray[0] + "\nDEX: " + statArray[1] +
 				"\nCON: " + statArray[2] + "\nINT: " + statArray[3] + "\nWIS: " + statArray[4] + "\nCHA: " + statArray[5]);
 
 			//comment out when done, skill mod output
 			for (int i =0; i < skillModArray.length; i++) {
-				System.out.println(skillModArray[i]);
-			}
-		} catch(Exception e) {
-			System.out.println("An invalid input was entered.");
-		}
+				System.out.println(skillModArray[i]);*/
+			
 	}
 
 		//saved stuff for later 
@@ -63,31 +60,7 @@ public class Dungeons{
 		//class stuff
 		String dndClassChoice = "";
 	
-		switch(dndClass){
-		case 1: dndClassChoice = "Barbarian";
-			break;
-		case 2: dndClassChoice = "Bard";
-			break;
-		case 3: dndClassChoice = "Cleric";
-			break;
-		case 4: dndClassChoice = "Druid";
-			break;
-		case 5: dndClassChoice = "Fighter";
-			break;
-		case 6: dndClassChoice = "Monk";
-			break;
-		case 7: dndClassChoice = "Paladin";
-			break;
-		case 8: dndClassChoice = "Ranger";
-			break;
-		case 9: dndClassChoice = "Rogue";
-			break;
-		case 10: dndClassChoice = "Sorc";
-			break;
-		case 11: dndClassChoice = "Warlock";
-			break;
-		case 12: dndClassChoice = "Wizard";
-			break;
+		
 			*/
 	
 
@@ -708,5 +681,121 @@ public class Dungeons{
 			savingThrowArray[4] += PROFICIENCY;
 			break;
 		}
+	}
+	public static void charSheet (String playerName, int playerClass, String playerRace, int statArray[], int playerBack, int skillsArray[], int statsMod[], int skillModArray[], int savingThrowArray[]) throws Exception{
+		String fileName = playerName + ".txt";
+		java.io.File outFile = new java.io.File(fileName);
+		java.io.PrintWriter output = new java.io.PrintWriter(outFile);
+		String dndClassChoice = "";
+		switch(playerClass){
+		case 1: dndClassChoice = "Barbarian";
+			break;
+		case 2: dndClassChoice = "Bard";
+			break;
+		case 3: dndClassChoice = "Cleric";
+			break;
+		case 4: dndClassChoice = "Druid";
+			break;
+		case 5: dndClassChoice = "Fighter";
+			break;
+		case 6: dndClassChoice = "Monk";
+			break;
+		case 7: dndClassChoice = "Paladin";
+			break;
+		case 8: dndClassChoice = "Ranger";
+			break;
+		case 9: dndClassChoice = "Rogue";
+			break;
+		case 10: dndClassChoice = "Sorc";
+			break;
+		case 11: dndClassChoice = "Warlock";
+			break;
+		case 12: dndClassChoice = "Wizard";
+			break;
+		}
+		int hp = 0;
+		switch(playerClass) {
+		case 1:
+			hp = 12 + statsMod[2];
+			break;
+		case 5, 7, 8:
+			hp = 10 + statsMod[2];
+			break;
+		case 10, 12:
+			hp = 6 + statsMod[2];
+			break;
+		default:
+			hp = 8 + statsMod[2];
+			break;
+		}
+		int speed = 0;
+		switch(playerRace) {
+		case "Hill Dwarf", "Mountain Dwarf", "Lightfoot Halfling", "Stout Halfling", "Forest Gnome", "Rock Gnome":
+			speed = 25;
+			break;
+		case "Wood Elf":
+			speed = 35;
+			break;
+		default: 
+			speed = 30;
+	}
+	int ac = 10 + statsMod[1];
+	String background = "";
+	switch(playerBack) {
+	case 1:
+		background = "Acolyte";
+		break;
+	case 2:
+		background = "Charlatan";
+		break;
+	case 3:
+		background = "Criminal";
+		break;
+	case 4:
+		background = "Entertainer";
+		break;
+	case 5:
+		background = "Guild Artisan";
+		break;
+	case 6:
+		background = "Hermit";
+		break;
+	case 7:
+		background = "Noble";
+		break;
+	case 8:
+		background = "Outlander";
+		break;
+	case 9:
+		background = "Sage";
+		break;
+	case 10:
+		background = "Soldier";
+		break;
+	case 11:
+		background = "Urchin";
+		break;	
+	}
+	String[] profArray = new String[19];
+	for (int i = 0; i < profArray.length; i++) {
+		if (skillsArray[i] == 1)
+			profArray[i] = "x";
+		else
+			profArray[i] = " ";
+	}
+		output.print(String.format("Name: %-21s Race: %-20s Class: %-15s Level: 1\n", playerName, playerRace, dndClassChoice));
+		
+		output.print(String.format("Background: %-15s Armor Class: %-13d Hit Points: %-10d Speed: %-8d Initiative: %+3d", background, ac, hp, speed, statsMod[1]));
+		output.print("\n                   STR   DEX   CON   INT   WIS   CHA");
+		output.print(String.format("\nAbility Scores: %5d %5d %5d %5d %5d %5d", statArray[0], statArray[1], statArray[2], statArray[3], statArray[4], statArray[5]));
+		output.print(String.format("\nAbility Modifier:%+4d %+5d %+5d %+5d %+5d %+5d", statsMod[0], statsMod[1], statsMod[2], statsMod[3], statsMod[4], statsMod[5]));
+		output.print(String.format("\nSaving Throws:   %+4d %+5d %+5d %+5d %+5d %+5d", savingThrowArray[0], savingThrowArray[1], savingThrowArray[2], savingThrowArray[3], savingThrowArray[4], savingThrowArray[5]));
+		output.print(String.format("\n[%1s] Acrobatics %+-8d [%1s] Animal Handling %+-4d [%1s] Arcana %+-3d", profArray[0],skillModArray[0], profArray[1], skillModArray[1], profArray[2], skillModArray[2]));
+		output.print(String.format("\n[%1s] Athletics %+-9d [%1s] Deception %+-10d [%1s] History %+-3d", profArray[3],skillModArray[3], profArray[4], skillModArray[4], profArray[5], skillModArray[5]));
+		output.print(String.format("\n[%1s] Insight %+-11d [%1s] Intimidation %+-7d [%1s] Investigation %+-3d", profArray[6],skillModArray[6], profArray[7], skillModArray[7], profArray[8], skillModArray[8]));
+		output.print(String.format("\n[%1s] Medicine %+-10d [%1s] Nature %+-13d [%1s] Perception %+-3d", profArray[9],skillModArray[9], profArray[10], skillModArray[10], profArray[11], skillModArray[11]));
+		output.print(String.format("\n[%1s] Performance %+-7d [%1s] Persuasion %+-9d [%1s] Religion %+-3d", profArray[12],skillModArray[12], profArray[13], skillModArray[13], profArray[14], skillModArray[14]));
+		output.print(String.format("\n[%1s] Sleight of Hand %+-3d [%1s] Stealth %+-12d [%1s] Survival %+-3d", profArray[15],skillModArray[15], profArray[16], skillModArray[16], profArray[17], skillModArray[17]));
+		output.close();
 	}
 }
