@@ -43,7 +43,7 @@ public class Dungeons{
 
 			//assigns the saving throws array
 			int[] savingThrowArray = new int[6];
-			getSavingThrowMods(playerClass, statsMod)
+			getSavingThrowMods(playerClass, statsMod, savingThrowArray);
 
 			//using this to check if program is working, comment out when done
 			System.out.println("Your stats are\n--------------\nSTR: " + statArray[0] + "\nDEX: " + statArray[1] +
@@ -53,7 +53,7 @@ public class Dungeons{
 			for (int i =0; i < skillModArray.length; i++) {
 				System.out.println(skillModArray[i]);
 			}
-		} catch(InputMismatchException | IndexOutOfBoundsException e) {
+		} catch(Exception e) {
 			System.out.println("An invalid input was entered.");
 		}
 	}
@@ -108,24 +108,29 @@ public class Dungeons{
 
 	public static int getClassD(){
 
-		System.out.print("Type the number of the class you want to choose: \n1. Barbarian" +
+		
+		Scanner input = new Scanner(System.in);
+		int dndClass = 0;
+		
+		while (dndClass < 1 || dndClass > 12) {
+			System.out.print("Type the number of the class you want to choose: \n1. Barbarian" +
 			"\n2. Bard\n3. Cleric\n4. Druid\n5. Fighter\n6. Monk\n7. Paladin\n8. Ranger" + 
 			"\n9. Rogue\n10. Sorcerer\n11. Warlock\n12. Wizard\n");
-		Scanner input = new Scanner(System.in);
-		int dndClass = input.nextInt();
-
+			dndClass = input.nextInt();	
+		}
 		return dndClass;	
 	}
 
 	public static String getRace(){
-
-		//race selection
-		System.out.print("Type the number of the race you want to choose: \n1. Dwarf" +
-			"\n2. Elf\n3. Halfling\n4. Human\n5. Dragonborn\n6. Gnome\n7. Half-Elf" +
-			"\n8. Half-Orc\n9. Tiefling\n");
 		Scanner input = new Scanner(System.in);
-		int dndRace = input.nextInt();
-
+		//race selection
+		int dndRace = 0;
+		while (dndRace < 1 || dndRace > 9) {
+			System.out.print("Type the number of the race you want to choose: \n1. Dwarf" +
+				"\n2. Elf\n3. Halfling\n4. Human\n5. Dragonborn\n6. Gnome\n7. Half-Elf" +
+				"\n8. Half-Orc\n9. Tiefling\n");
+			dndRace = input.nextInt();
+		}
 
 
 		String dndRaceChoice = "";
@@ -617,7 +622,7 @@ public class Dungeons{
 					int expertiseChoice = input.nextInt();
 
 					if (skillsArray[expertiseChoice] == 1)
-						skillsArray[expertiseChoice] == 2;
+						skillsArray[expertiseChoice] = 2;
 					else k--;
 				}
 		}
@@ -652,7 +657,7 @@ public class Dungeons{
 		skillModArray[17] = statsMod[4] + (PROFICIENCY * skillsArray[17]);
 	}
 
-	public static void getSavingThrowMods(int playerClass, int statsMod[]) {
+	public static void getSavingThrowMods(int playerClass, int statsMod[], int savingThrowArray[]) {
 		final int PROFICIENCY = 2;
 		for (int i = 0; i < savingThrowArray.length; i++) {
 			savingThrowArray[i] = statsMod[i];
