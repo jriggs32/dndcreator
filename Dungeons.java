@@ -783,14 +783,36 @@ public class Dungeons{
 		else
 			profArray[i] = " ";
 	}
-		output.print(String.format("Name: %-21s Race: %-20s Class: %-15s Level: 1\n", playerName, playerRace, dndClassChoice));
 		
+		output.println("      ______ _                         _____                      _                ");
+   		output.println("      | ___ \\ |                       |  _  |                    (_)              ");
+   		output.println("      | |_/ / | __ _ _   _  ___ _ __  | | | |_   _____ _ ____   ___  _____      __ ");
+   		output.println("      |  __/| |/ _` | | | |/ _ \\ '__| | | | \\ \\ / / _ \\ '__\\ \\ / / |/ _ \\ \\ /\\ / / ");
+   		output.println("      | |   | | (_| | |_| |  __/ |    \\ \\_/ /\\ V /  __/ |   \\ V /| |  __/\\ V  V /  ");
+   		output.println("      \\_|   |_|\\__,_|\\__, |\\___|_|     \\___/  \\_/ \\___|_|    \\_/ |_|\\___| \\_/\\_/   ");
+   		output.println("                      __/ |                                                        ");
+   		output.println("                     |___/                                                         ");
+   		output.println("==============================================================================================================");
+   		output.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+   		output.println("==============================================================================================================");
+
+		output.print(String.format("Name: %-21s Race: %-20s Class: %-15s Level: 1\n", playerName, playerRace, dndClassChoice));
 		output.print(String.format("Background: %-15s Armor Class: %-13d Hit Points: %-10d Speed: %-8d Initiative: %+3d", background, ac, hp, speed, statsMod[1]));
-		output.print("\n                   STR   DEX   CON   INT   WIS   CHA");
+		
+		output.println("\n--------------------------------------------------------------------------------------------------------------");
+		output.println("                                                   S T A T S                                               ");
+		output.println("--------------------------------------------------------------------------------------------------------------");
+
+		output.print("                   STR   DEX   CON   INT   WIS   CHA");
 		output.print(String.format("\nAbility Scores: %5d %5d %5d %5d %5d %5d", statArray[0], statArray[1], statArray[2], statArray[3], statArray[4], statArray[5]));
 		output.print(String.format("\nAbility Modifier:%+4d %+5d %+5d %+5d %+5d %+5d", statsMod[0], statsMod[1], statsMod[2], statsMod[3], statsMod[4], statsMod[5]));
 		output.print(String.format("\nSaving Throws:   %+4d %+5d %+5d %+5d %+5d %+5d", savingThrowArray[0], savingThrowArray[1], savingThrowArray[2], savingThrowArray[3], savingThrowArray[4], savingThrowArray[5]));
-		output.print(String.format("\n[%1s] Acrobatics %+-8d [%1s] Animal Handling %+-4d [%1s] Arcana %+-3d", profArray[0],skillModArray[0], profArray[1], skillModArray[1], profArray[2], skillModArray[2]));
+		
+		output.println("\n--------------------------------------------------------------------------------------------------------------");
+		output.println("                                                   S K I L L S                                             ");		
+		output.println("--------------------------------------------------------------------------------------------------------------");
+
+		output.print(String.format("[%1s] Acrobatics %+-8d [%1s] Animal Handling %+-4d [%1s] Arcana %+-3d", profArray[0],skillModArray[0], profArray[1], skillModArray[1], profArray[2], skillModArray[2]));
 		output.print(String.format("\n[%1s] Athletics %+-9d [%1s] Deception %+-10d [%1s] History %+-3d", profArray[3],skillModArray[3], profArray[4], skillModArray[4], profArray[5], skillModArray[5]));
 		output.print(String.format("\n[%1s] Insight %+-11d [%1s] Intimidation %+-7d [%1s] Investigation %+-3d", profArray[6],skillModArray[6], profArray[7], skillModArray[7], profArray[8], skillModArray[8]));
 		output.print(String.format("\n[%1s] Medicine %+-10d [%1s] Nature %+-13d [%1s] Perception %+-3d", profArray[9],skillModArray[9], profArray[10], skillModArray[10], profArray[11], skillModArray[11]));
