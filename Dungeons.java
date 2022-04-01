@@ -588,7 +588,7 @@ public class Dungeons{
 		if (tempClass == 9) {
 			for (int k = 0; k < 2 ; k++) {
 				System.out.print("Select which skills the Rogue will have expertise in (double proficiency)");
-				for (int l = 0; k < skillsArray.length; l++) {
+				for (int l = 0; l < skillsArray.length; l++) {
 					if (skillsArray[l] == 1)
 						System.out.print(l + ". " + skillsArray[l] + "\n");
 				}
@@ -739,7 +739,11 @@ public class Dungeons{
 		default: 
 			speed = 30;
 	}
-	int ac = 10 + statsMod[1];
+	int ac = 10 + statsMod[1];//assign the AC stat based on dex mod
+	if (playerClass == 1)//Take care of the barbarian unarmored defense
+		ac += statsMod[2];
+	if (playerClass == 6)//Take care of the monk unarmored defense
+		ac += statsMod[4];
 	String background = "";
 	switch(playerBack) {
 	case 1:
