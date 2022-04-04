@@ -405,6 +405,7 @@ public class Dungeons{
 			break;
 		case 3: skillsArray[4] = 1;
 			skillsArray[16] = 1;
+			skillsArray[18]=1;
 			break;
 		case 4: skillsArray[0] = 1;
 			skillsArray[12] = 1;
