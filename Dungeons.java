@@ -23,7 +23,6 @@ public class Dungeons{
 
 			 //background selection
 			int playerBack = getBackground();
-			System.out.print("\n" + playerBack);
 
 			 //race stat modifications
 			modRaceStat(playerRace, statArray);
@@ -587,7 +586,7 @@ public class Dungeons{
 
 		if (tempClass == 9) {
 			for (int k = 0; k < 2 ; k++) {
-				System.out.print("Select which skills the Rogue will have expertise in (double proficiency)");
+				System.out.println("Select which skills the Rogue will have expertise in (double proficiency)");
 				for (int l = 0; l < skillsArray.length; l++) {
 					if (skillsArray[l] == 1)
 						System.out.print(l + ". " + tempNameSkills[l] + "\n");
@@ -628,6 +627,7 @@ public class Dungeons{
 		skillModArray[15] = statsMod[1] + (PROFICIENCY * skillsArray[15]);
 		skillModArray[16] = statsMod[1] + (PROFICIENCY * skillsArray[16]);
 		skillModArray[17] = statsMod[4] + (PROFICIENCY * skillsArray[17]);
+		skillModArray[18] = statsMod[1] + (PROFICIENCY * skillsArray[18]);
 	}
 
 	public static void getSavingThrowMods(int playerClass, int statsMod[], int savingThrowArray[]) {
@@ -822,6 +822,9 @@ public class Dungeons{
 		output.print(String.format("\n[%1s] Medicine %+-10d [%1s] Nature %+-13d [%1s] Perception %+-3d", profArray[9],skillModArray[9], profArray[10], skillModArray[10], profArray[11], skillModArray[11]));
 		output.print(String.format("\n[%1s] Performance %+-7d [%1s] Persuasion %+-9d [%1s] Religion %+-3d", profArray[12],skillModArray[12], profArray[13], skillModArray[13], profArray[14], skillModArray[14]));
 		output.print(String.format("\n[%1s] Sleight of Hand %+-3d [%1s] Stealth %+-12d [%1s] Survival %+-3d", profArray[15],skillModArray[15], profArray[16], skillModArray[16], profArray[17], skillModArray[17]));
+		if (playerClass == 9 || playerBack == 3 || playerBack == 11)
+			output.print(String.format("\n[%1s] Thieves' Tools %+-3d", profArray[18], skillModArray[18]));
+		System.out.println("Your character sheet was created.");
 		output.close();
 	}
 }
