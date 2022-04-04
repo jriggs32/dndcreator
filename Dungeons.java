@@ -590,7 +590,7 @@ public class Dungeons{
 				System.out.print("Select which skills the Rogue will have expertise in (double proficiency)");
 				for (int l = 0; l < skillsArray.length; l++) {
 					if (skillsArray[l] == 1)
-						System.out.print(l + ". " + skillsArray[l] + "\n");
+						System.out.print(l + ". " + tempNameSkills[l] + "\n");
 				}
 					int expertiseChoice = input.nextInt();
 
@@ -782,7 +782,7 @@ public class Dungeons{
 	}
 	String[] profArray = new String[19];
 	for (int i = 0; i < profArray.length; i++) {
-		if (skillsArray[i] == 1)
+		if (skillsArray[i] == 1 || skillsArray[i] == 2)
 			profArray[i] = "x";
 		else
 			profArray[i] = " ";
