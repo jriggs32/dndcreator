@@ -3,6 +3,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
+//project by: Brian Butzen and Jordan Riggs
+
 public class Dungeons{
 	public static void main(String[] args) throws Exception{
 			Scanner input = new Scanner(System.in);
@@ -396,7 +398,7 @@ public class Dungeons{
 								break;
 						}
 				} else
-					
+					i--;
 					System.out.print("Please enter: STR, DEX, CON, INT, WIS\n");
 
 			}
@@ -420,6 +422,8 @@ public class Dungeons{
 
 			skillsArray[7] = 1;
 		}
+		if (race.equals("High Elf") || race.equals("Wood Elf"))
+			skillsArray[11] = 1;
 
 		switch(tempBack){
 		case 1: skillsArray[6] = 1;
@@ -430,7 +434,7 @@ public class Dungeons{
 			break;
 		case 3: skillsArray[4] = 1;
 			skillsArray[16] = 1;
-			skillsArray[18]=1;//automatic proficiency with theives' tools
+			skillsArray[18]=1;//automatic proficiency with thieves' tools
 			break;
 		case 4: skillsArray[0] = 1;
 			skillsArray[12] = 1;
@@ -594,6 +598,13 @@ public class Dungeons{
 			numSkills =2;
 			break;
 		}
+		if (race == "Half-Elf") {
+			for (int i =0; i < tempSkills.length; i++) {
+				tempSkills[i] = 1;
+			}
+			numSkills += 2;
+		}
+
 		for (int i = 0; i < numSkills; i++){//assign appropriate skills
 			int skillChoice = 100;//set far outside the range
 			String s = "";
@@ -601,15 +612,15 @@ public class Dungeons{
 					boolean valid = false;//initial setting of the flag
 					while(!valid) {//while the input isnt an integer
 						System.out.print("Select which skills you'd like to be proficient in:\n");
-						for (int j = 1; j < tempSkills.length; j++){
+						for (int j = 0; j < tempSkills.length; j++){
 							if(tempSkills[j] == 1 && skillsArray[j] == 0){//skill is available for the class and not already given
-								System.out.print(j +". "+ tempNameSkills[j-1] + "\n");
+								System.out.print(j +". "+ tempNameSkills[j] + "\n");
 							}
 						}
 						s = input.nextLine();//get output into a string
 						valid = isInt(s);//call isInt method returning whether it's valid
 					}
-					skillChoice = Integer.parseInt(s) - 1;//parse the integer which then gets checked whether it's in the range specified. If not, it runs both loops again.
+					skillChoice = Integer.parseInt(s);//parse the integer which then gets checked whether it's in the range specified. If not, it runs both loops again.
 					if (tempSkills[skillChoice] == 1 && skillsArray[skillChoice] == 0) {
 						skillsArray[skillChoice] = 1;//assign the skill
 					} else i--;	
@@ -624,21 +635,21 @@ public class Dungeons{
 					boolean valid = false;
 					while(!valid) {
 						System.out.println("Select which skills the Rogue will have expertise in (double proficiency)");
-						for (int l = 1; l < skillsArray.length; l++) {
-							if (skillsArray[l-1] == 1)
-								System.out.print(l + ". " + tempNameSkills[l-1] + "\n");
+						for (int l = 0; l < skillsArray.length; l++) {
+							if (skillsArray[l] == 1)
+								System.out.print(l + ". " + tempNameSkills[l] + "\n");
 						}
 						s = input.nextLine();
 						valid = isInt(s);
 					}
-					expertiseChoice = Integer.parseInt(s) - 1;
+					expertiseChoice = Integer.parseInt(s);
 					if (skillsArray[expertiseChoice] == 1)
 						skillsArray[expertiseChoice] = 2;
 					else k--;
 				}
+			}
 		}
 	}
-}
 	public static void getStatsMod(int statsMod[], int statArray[]) { //assigns the stat modifier
 		for (int i = 0; i < statArray.length; i++) {
 			statsMod[i] = (statArray[i] / 2) - 5;
@@ -712,10 +723,14 @@ public class Dungeons{
 			savingThrowArray[3] += PROFICIENCY;
 			break;
 		case 10:
-			savingThrowArray[4] += PROFICIENCY;
+			savingThrowArray[2] += PROFICIENCY;
 			savingThrowArray[5] += PROFICIENCY;
 			break;
 		case 11:
+			savingThrowArray[4] += PROFICIENCY;
+			savingThrowArray[5] += PROFICIENCY;
+			break;
+		case 12:
 			savingThrowArray[3] += PROFICIENCY;
 			savingThrowArray[4] += PROFICIENCY;
 			break;
@@ -777,57 +792,57 @@ public class Dungeons{
 			break;
 		default: 
 			speed = 30;
-	}
-	int ac = 10 + statsMod[1];//assign the AC stat based on dex mod
-	if (playerClass == 1)//Take care of the barbarian unarmored defense
+		}
+		int ac = 10 + statsMod[1];//assign the AC stat based on dex mod
+		if (playerClass == 1)//Take care of the barbarian unarmored defense
 		ac += statsMod[2];
-	if (playerClass == 6)//Take care of the monk unarmored defense
+		if (playerClass == 6)//Take care of the monk unarmored defense
 		ac += statsMod[4];
-	String background = "";
-	switch(playerBack) {
-	case 1:
-		background = "Acolyte";
-		break;
-	case 2:
-		background = "Charlatan";
-		break;
-	case 3:
-		background = "Criminal";
-		break;
-	case 4:
-		background = "Entertainer";
-		break;
-	case 5:
-		background = "Guild Artisan";
-		break;
-	case 6:
-		background = "Hermit";
-		break;
-	case 7:
-		background = "Noble";
-		break;
-	case 8:
-		background = "Outlander";
-		break;
-	case 9:
-		background = "Sage";
-		break;
-	case 10:
-		background = "Soldier";
-		break;
-	case 11:
-		background = "Urchin";
-		break;	
-	}
-	String[] profArray = new String[19];
-	for (int i = 0; i < profArray.length; i++) {
-		if (skillsArray[i] == 1)
-			profArray[i] = "x";
-		else if (skillsArray[i] == 2)
-			profArray[i] = "X";
-		else
-			profArray[i] = " ";
-	}
+		String background = "";
+		switch(playerBack) {
+		case 1:
+			background = "Acolyte";
+			break;
+		case 2:
+			background = "Charlatan";
+			break;
+		case 3:
+			background = "Criminal";
+			break;
+		case 4:
+			background = "Entertainer";
+			break;
+		case 5:
+			background = "Guild Artisan";
+			break;
+		case 6:
+			background = "Hermit";
+			break;
+		case 7:
+			background = "Noble";
+			break;
+		case 8:
+			background = "Outlander";
+			break;
+		case 9:
+			background = "Sage";
+			break;
+		case 10:
+			background = "Soldier";
+			break;
+		case 11:
+			background = "Urchin";
+			break;	
+		}
+		String[] profArray = new String[19];
+		for (int i = 0; i < profArray.length; i++) {
+			if (skillsArray[i] == 1)
+				profArray[i] = "x";
+			else if (skillsArray[i] == 2)
+				profArray[i] = "@";
+			else
+				profArray[i] = " ";
+		}
 		
 		output.println("      ______ _                         _____                      _                ");
    		output.println("      | ___ \\ |                       |  _  |                    (_)              ");
