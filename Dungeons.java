@@ -3,8 +3,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
-//project by: Brian Butzen and Jordan Riggs
-
 public class Dungeons{
 	public static void main(String[] args) throws Exception{
 			Scanner input = new Scanner(System.in);
@@ -13,11 +11,9 @@ public class Dungeons{
 			
 			//class selection
 			int playerClass = getClassD();
-			System.out.print(playerClass);
 			
 			//race and subrace selection
 			String playerRace = getRace();
-			System.out.print("\n" + playerRace + "\n");
 
 			 //stat rolls and selection
 			int[] statArray = new int[6];
@@ -63,18 +59,14 @@ public class Dungeons{
 
 	public static int getClassD(){
 		Scanner input = new Scanner(System.in);
-		int dndClass = 100;
+		int dndClass = -1;
 		String s = "";
 		while (dndClass < 1 || dndClass > 12) {
-			boolean valid = false;//initial setting of the flag
-			while(!valid) {//while the input isnt an integer
-				System.out.print("Type the number of the class you want to choose: \n1. Barbarian" +
-					"\n2. Bard\n3. Cleric\n4. Druid\n5. Fighter\n6. Monk\n7. Paladin\n8. Ranger" + 
-					"\n9. Rogue\n10. Sorcerer\n11. Warlock\n12. Wizard\n");
-					s = input.nextLine();//get output into a string
-				valid = isInt(s);//call isInt method returning whether it's valid
-			}
-			dndClass = Integer.parseInt(s);//parse the integer which then gets checked whether it's in the range specified. If not, it runs both loops again.
+			System.out.print("Type the number of the class you want to choose: \n1. Barbarian" +
+				"\n2. Bard\n3. Cleric\n4. Druid\n5. Fighter\n6. Monk\n7. Paladin\n8. Ranger" + 
+				"\n9. Rogue\n10. Sorcerer\n11. Warlock\n12. Wizard\n");
+			s = input.nextLine();//get output into a string
+			dndClass = isInt(s);
 		}
 		return dndClass;	
 	}
@@ -82,36 +74,27 @@ public class Dungeons{
 	public static String getRace(){
 		Scanner input = new Scanner(System.in);
 		//race selection
-		int dndRace = 0;
+		int dndRace = -1;
 		String s = "";
 		while (dndRace < 1 || dndRace > 9) {
-			boolean valid = false;//initial setting of the flag
-			while(!valid) {//while the input isnt an integer
-				System.out.print("Type the number of the race you want to choose: \n1. Dwarf" +
-				"\n2. Elf\n3. Halfling\n4. Human\n5. Dragonborn\n6. Gnome\n7. Half-Elf" +
-				"\n8. Half-Orc\n9. Tiefling\n");
-				s = input.nextLine();//get output into a string
-				valid = isInt(s);//call isInt method returning whether it's valid
-			}
-			dndRace = Integer.parseInt(s);
+			System.out.print("Type the number of the race you want to choose: \n1. Dwarf" +
+			"\n2. Elf\n3. Halfling\n4. Human\n5. Dragonborn\n6. Gnome\n7. Half-Elf" +
+			"\n8. Half-Orc\n9. Tiefling\n");
+			s = input.nextLine();//get output into a string
+			dndRace = isInt(s);//call isInt method returning whether it's valid
 		}
 
-
 		String dndRaceChoice = "";
-		int dndSubraceChoice = 0;
+		int dndSubraceChoice = -1;
 		s = "";
 		//subrace selection system
 		switch(dndRace){
 		case 1: dndRaceChoice = "Dwarf";
 			while(dndSubraceChoice < 1 || dndSubraceChoice > 2) {
-				boolean valid = false;
-				while(!valid) {
-					System.out.println("Please choose a subrace.\n1. Hill Dwarf (+2 CON) " + 
-					" (+1 WIS)\n2. Mountain Dwarf (+2 STR) (+2 CON)");
-					s = input.nextLine();
-					valid = isInt(s);
-				}
-				dndSubraceChoice = Integer.parseInt(s);
+				System.out.println("Please choose a subrace.\n1. Hill Dwarf (+2 CON) " + 
+				" (+1 WIS)\n2. Mountain Dwarf (+2 STR) (+2 CON)");
+				s = input.nextLine();
+				dndSubraceChoice = isInt(s);
 			}
 			switch(dndSubraceChoice){
 			case 1: dndRaceChoice = "Hill Dwarf";
@@ -122,14 +105,10 @@ public class Dungeons{
 			break;
 		case 2: dndRaceChoice = "Elf";
 			while(dndSubraceChoice < 1 || dndSubraceChoice > 2) {
-				boolean valid = false;
-				while(!valid) {
-					System.out.println("Please choose a subrace.\n1. High Elf (+2 DEX) " + 
-						" (+1 INT)\n2. Wood Elf (+2 DEX) (+1 WIS)");
-					s = input.nextLine();
-					valid = isInt(s);
-				}
-				dndSubraceChoice = Integer.parseInt(s);
+				System.out.println("Please choose a subrace.\n1. High Elf (+2 DEX) " + 
+					" (+1 INT)\n2. Wood Elf (+2 DEX) (+1 WIS)");
+				s = input.nextLine();
+				dndSubraceChoice = isInt(s);
 			}
 			switch(dndSubraceChoice){
 			case 1: dndRaceChoice = "High Elf";
@@ -140,14 +119,10 @@ public class Dungeons{
 			break;
 		case 3: dndRaceChoice = "Halfling";
 			while(dndSubraceChoice < 1 || dndSubraceChoice > 2) {
-				boolean valid = false;
-				while(!valid) {
-					System.out.println("Please choose a subrace.\n1. Lightfoot Halfling (+2 DEX) " + 
-						" (+1 CHA)\n2. Stout Halfling (+2 DEX) (+1 CON)");
-					s = input.nextLine();
-					valid = isInt(s);
-				}
-				dndSubraceChoice = Integer.parseInt(s);
+				System.out.println("Please choose a subrace.\n1. Lightfoot Halfling (+2 DEX) " + 
+					" (+1 CHA)\n2. Stout Halfling (+2 DEX) (+1 CON)");
+				s = input.nextLine();
+				dndSubraceChoice = isInt(s);
 			}
 			switch(dndSubraceChoice){
 			case 1: dndRaceChoice = "Lightfoot Halfling";
@@ -166,14 +141,10 @@ public class Dungeons{
 			break;
 		case 6: dndRaceChoice = "Gnome";
 			while(dndSubraceChoice < 1 || dndSubraceChoice > 2) {
-				boolean valid = false;
-				while(!valid) {
 					System.out.println("Please choose a subrace.\n1. Forest Gnome (+1 DEX) " + 
 						" (+2 INT)\n2. Rock Gnome (+1 CON) (+2 INT)");
 					s = input.nextLine();
-					valid = isInt(s);
-				}
-				dndSubraceChoice = Integer.parseInt(s);
+					dndSubraceChoice = isInt(s);
 			}
 			switch(dndSubraceChoice){
 			case 1: dndRaceChoice = "Forest Gnome";
@@ -290,15 +261,11 @@ public class Dungeons{
 		int dndBack = 100;
 		String s  = "";
 		while(dndBack < 1 || dndBack > 11) {//we would set the desired range here
-			boolean valid = false;//initial setting of the flag
-			while(!valid) {//while the input isnt an integer
-				System.out.print("Type the number of the background you want to choose: \n1. Acolyte" +
-					"\n2. Charlatan\n3. Criminal\n4. Entertainer\n5. Guild Artisan\n6. Hermit\n7. Noble" +
-					"\n8. Outlander\n9. Sage\n10. Soldier\n11. Urchin\n");	
-				s = input.nextLine();//get output into a string
-				valid = isInt(s);//call isInt method returning whether it's valid
-			}
-			dndBack = Integer.parseInt(s);//parse the integer which then gets checked whether it's in the range specified. If not, it runs both loops again.
+			System.out.print("Type the number of the background you want to choose: \n1. Acolyte" +
+				"\n2. Charlatan\n3. Criminal\n4. Entertainer\n5. Guild Artisan\n6. Hermit\n7. Noble" +
+				"\n8. Outlander\n9. Sage\n10. Soldier\n11. Urchin\n");	
+			s = input.nextLine();//get output into a string
+			dndBack = isInt(s);
 		}
 		return dndBack;
 	}
@@ -398,7 +365,7 @@ public class Dungeons{
 								break;
 						}
 				} else
-					i--;
+					
 					System.out.print("Please enter: STR, DEX, CON, INT, WIS\n");
 
 			}
@@ -422,8 +389,6 @@ public class Dungeons{
 
 			skillsArray[7] = 1;
 		}
-		if (race.equals("High Elf") || race.equals("Wood Elf"))
-			skillsArray[11] = 1;
 
 		switch(tempBack){
 		case 1: skillsArray[6] = 1;
@@ -434,7 +399,7 @@ public class Dungeons{
 			break;
 		case 3: skillsArray[4] = 1;
 			skillsArray[16] = 1;
-			skillsArray[18]=1;//automatic proficiency with thieves' tools
+			skillsArray[18]=1;//automatic proficiency with theives' tools
 			break;
 		case 4: skillsArray[0] = 1;
 			skillsArray[12] = 1;
@@ -598,29 +563,18 @@ public class Dungeons{
 			numSkills =2;
 			break;
 		}
-		if (race == "Half-Elf") {
-			for (int i =0; i < tempSkills.length; i++) {
-				tempSkills[i] = 1;
-			}
-			numSkills += 2;
-		}
-
 		for (int i = 0; i < numSkills; i++){//assign appropriate skills
 			int skillChoice = 100;//set far outside the range
 			String s = "";
 				while(skillChoice > 18) {//we would set the desired range here
-					boolean valid = false;//initial setting of the flag
-					while(!valid) {//while the input isnt an integer
 						System.out.print("Select which skills you'd like to be proficient in:\n");
-						for (int j = 0; j < tempSkills.length; j++){
+						for (int j = 1; j < tempSkills.length; j++){
 							if(tempSkills[j] == 1 && skillsArray[j] == 0){//skill is available for the class and not already given
-								System.out.print(j +". "+ tempNameSkills[j] + "\n");
+								System.out.print(j +". "+ tempNameSkills[j-1] + "\n");
 							}
 						}
 						s = input.nextLine();//get output into a string
-						valid = isInt(s);//call isInt method returning whether it's valid
-					}
-					skillChoice = Integer.parseInt(s);//parse the integer which then gets checked whether it's in the range specified. If not, it runs both loops again.
+						skillChoice = isInt(s);//call isInt method returning whether it's valid
 					if (tempSkills[skillChoice] == 1 && skillsArray[skillChoice] == 0) {
 						skillsArray[skillChoice] = 1;//assign the skill
 					} else i--;	
@@ -632,24 +586,20 @@ public class Dungeons{
 				int expertiseChoice = 100;
 				String s = "";
 				while(expertiseChoice > 18) {
-					boolean valid = false;
-					while(!valid) {
 						System.out.println("Select which skills the Rogue will have expertise in (double proficiency)");
-						for (int l = 0; l < skillsArray.length; l++) {
-							if (skillsArray[l] == 1)
-								System.out.print(l + ". " + tempNameSkills[l] + "\n");
+						for (int l = 1; l < skillsArray.length; l++) {
+							if (skillsArray[l-1] == 1)
+								System.out.print(l + ". " + tempNameSkills[l-1] + "\n");
 						}
 						s = input.nextLine();
-						valid = isInt(s);
-					}
-					expertiseChoice = Integer.parseInt(s);
+						expertiseChoice = isInt(s) - 1;
 					if (skillsArray[expertiseChoice] == 1)
 						skillsArray[expertiseChoice] = 2;
 					else k--;
 				}
-			}
 		}
 	}
+}
 	public static void getStatsMod(int statsMod[], int statArray[]) { //assigns the stat modifier
 		for (int i = 0; i < statArray.length; i++) {
 			statsMod[i] = (statArray[i] / 2) - 5;
@@ -723,14 +673,10 @@ public class Dungeons{
 			savingThrowArray[3] += PROFICIENCY;
 			break;
 		case 10:
-			savingThrowArray[2] += PROFICIENCY;
-			savingThrowArray[5] += PROFICIENCY;
-			break;
-		case 11:
 			savingThrowArray[4] += PROFICIENCY;
 			savingThrowArray[5] += PROFICIENCY;
 			break;
-		case 12:
+		case 11:
 			savingThrowArray[3] += PROFICIENCY;
 			savingThrowArray[4] += PROFICIENCY;
 			break;
@@ -792,57 +738,57 @@ public class Dungeons{
 			break;
 		default: 
 			speed = 30;
-		}
-		int ac = 10 + statsMod[1];//assign the AC stat based on dex mod
-		if (playerClass == 1)//Take care of the barbarian unarmored defense
+	}
+	int ac = 10 + statsMod[1];//assign the AC stat based on dex mod
+	if (playerClass == 1)//Take care of the barbarian unarmored defense
 		ac += statsMod[2];
-		if (playerClass == 6)//Take care of the monk unarmored defense
+	if (playerClass == 6)//Take care of the monk unarmored defense
 		ac += statsMod[4];
-		String background = "";
-		switch(playerBack) {
-		case 1:
-			background = "Acolyte";
-			break;
-		case 2:
-			background = "Charlatan";
-			break;
-		case 3:
-			background = "Criminal";
-			break;
-		case 4:
-			background = "Entertainer";
-			break;
-		case 5:
-			background = "Guild Artisan";
-			break;
-		case 6:
-			background = "Hermit";
-			break;
-		case 7:
-			background = "Noble";
-			break;
-		case 8:
-			background = "Outlander";
-			break;
-		case 9:
-			background = "Sage";
-			break;
-		case 10:
-			background = "Soldier";
-			break;
-		case 11:
-			background = "Urchin";
-			break;	
-		}
-		String[] profArray = new String[19];
-		for (int i = 0; i < profArray.length; i++) {
-			if (skillsArray[i] == 1)
-				profArray[i] = "x";
-			else if (skillsArray[i] == 2)
-				profArray[i] = "@";
-			else
-				profArray[i] = " ";
-		}
+	String background = "";
+	switch(playerBack) {
+	case 1:
+		background = "Acolyte";
+		break;
+	case 2:
+		background = "Charlatan";
+		break;
+	case 3:
+		background = "Criminal";
+		break;
+	case 4:
+		background = "Entertainer";
+		break;
+	case 5:
+		background = "Guild Artisan";
+		break;
+	case 6:
+		background = "Hermit";
+		break;
+	case 7:
+		background = "Noble";
+		break;
+	case 8:
+		background = "Outlander";
+		break;
+	case 9:
+		background = "Sage";
+		break;
+	case 10:
+		background = "Soldier";
+		break;
+	case 11:
+		background = "Urchin";
+		break;	
+	}
+	String[] profArray = new String[19];
+	for (int i = 0; i < profArray.length; i++) {
+		if (skillsArray[i] == 1)
+			profArray[i] = "x";
+		else if (skillsArray[i] == 2)
+			profArray[i] = "X";
+		else
+			profArray[i] = " ";
+	}
 		
 		output.println("      ______ _                         _____                      _                ");
    		output.println("      | ___ \\ |                       |  _  |                    (_)              ");
@@ -884,13 +830,13 @@ public class Dungeons{
 		output.close();
 	}
 
-	private static boolean isInt(String s) {
+	private static int isInt(String s) {
 		try {//anything in the try block may cause an error
 			Integer.parseInt(s);
 		}
 		catch (NumberFormatException nfe) {//if an error occurs (the string s isn't parseable), the catch block is run
-			return false;//returns false keeping the inner loop running
+			return -1;//returns false keeping the inner loop running
 		}
-		return true;//The string was parseable meaning that the string was an integer.
+		return Integer.parseInt(s);//The string was parseable meaning that the string was an integer.
 	}
 }
